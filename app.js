@@ -1,3 +1,4 @@
+// variables
 const planButtons = document.querySelectorAll(".btn-plan");
 const planTitle = document.querySelector(".icon-set-plan-title");
 const planPrice = document.querySelector(".icon-set-price");
@@ -23,6 +24,7 @@ const planDetails = [
   },
 ];
 
+// event listeners handlers
 planButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     for (plan of planDetails) {
@@ -36,6 +38,7 @@ planButtons.forEach((button) => {
 });
 
 btnCart.addEventListener("click", (e) => {
+  //   show the user what plan is added to cart
   let str = `
         Added to cart:
         Plan: ${planTitle.textContent}
@@ -46,17 +49,20 @@ btnCart.addEventListener("click", (e) => {
   alert(str);
 });
 
+// update ui when plan clicked
 function updatePlanDetails(obj) {
   planTitle.textContent = obj.name;
   planPrice.textContent = "$" + obj.price;
   planIcons.textContent = obj.icons;
 }
 
+// update active state of button when clicked
 function updateActivePlan(el) {
   planButtons.forEach((pb) => pb.classList.remove("btn-active"));
   el.classList.add("btn-active");
 }
 
+// update which icon to show based on plan clicked
 function updateIcons(id) {
   if (id !== "basic") {
     iconSetListItemsIcons[1].classList.remove("fa-xmark");
